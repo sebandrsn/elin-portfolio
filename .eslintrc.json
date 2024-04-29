@@ -1,3 +1,7 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "semi": ["error", "never"],  // Enforce no semicolons
+    "no-extra-semi": "error"     // Disallow unnecessary semicolons
+  }
 }
