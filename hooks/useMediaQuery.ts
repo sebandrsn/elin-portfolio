@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react'
 
-const useMediaQuery = (query: string): boolean => {
+export interface UseMediaQueryResponse {
+  isMobile: boolean
+  loaded: boolean
+}
+
+export default function useMediaQuery(query: string): UseMediaQueryResponse {
   const [matches, setMatches] = useState<boolean>(false)
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -12,12 +18,11 @@ const useMediaQuery = (query: string): boolean => {
 
       media.addEventListener('change', listener)
       setMatches(media.matches)
+      setLoaded(true)
 
       return () => media.removeEventListener('change', listener)
     }
   }, [query])
 
-  return matches
+  return { isMobile: matches, loaded }
 }
-
-export default useMediaQuery

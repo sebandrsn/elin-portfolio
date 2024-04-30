@@ -1,11 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import useMediaQuery from '@/hooks/useMediaQuery'
+import Menu from '@/components/Menu'
 
 export default function Header() {
-  const isMobile = useMediaQuery('(max-width: 640px)')
+  const mediaQuery = useMediaQuery('(max-width: 640px)')
 
   return (
     <header className="bg-sky-500 py-4">
@@ -15,40 +15,39 @@ export default function Header() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            src="/icons/logo-instagram.svg"
-            width={30}
-            height={200}
-            alt="Visit our Instagram page"
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-8 h-8 hover:fill-white"
+            viewBox="0 0 512 512"
+          >
+            <path d="M349.33 69.33a93.62 93.62 0 0193.34 93.34v186.66a93.62 93.62 0 01-93.34 93.34H162.67a93.62 93.62 0 01-93.34-93.34V162.67a93.62 93.62 0 0193.34-93.34h186.66m0-37.33H162.67C90.8 32 32 90.8 32 162.67v186.66C32 421.2 90.8 480 162.67 480h186.66C421.2 480 480 421.2 480 349.33V162.67C480 90.8 421.2 32 349.33 32z" />
+            <path d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z" />
+          </svg>
         </a>
-        {!isMobile && (
-          <div className="space-x-4">
-            <Link href={'/'} className="hover:text-yellow-700">
+        {!mediaQuery.isMobile && (
+          <div
+            className={`space-x-4 ${mediaQuery.loaded ? 'block' : 'hidden'}`}
+          >
+            <Link href={'/'} className="hover:text-white text-black">
               home
             </Link>
-            <Link href={'/photos'} className="hover:text-yellow-700">
+            <Link href={'/photos'} className="hover:text-white text-black">
               photos
             </Link>
-            <Link href={'/about'} className="hover:text-yellow-700">
+            <Link href={'/about'} className="hover:text-white text-black">
               about me
             </Link>
-            <Link href={'/contact'} className="hover:text-yellow-700">
+            <Link href={'/contact'} className="hover:text-white text-black">
               contact
             </Link>
           </div>
         )}
-        {isMobile && (
+        {mediaQuery.isMobile && (
           <>
-            <h1>elin åsedahl</h1>
-            <button>
-              <Image
-                src="/icons/menu-outline.svg"
-                width={30}
-                height={200}
-                alt="Open menu"
-              />
-            </button>
+            <Link href={'/'} className="text-black">
+              elin åsedahl
+            </Link>
+            <Menu />
           </>
         )}
       </div>
