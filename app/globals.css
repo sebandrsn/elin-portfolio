@@ -5,3 +5,11 @@
 body {
   @apply bg-neutral-800 text-neutral-400;
 }
+
+.blur {
+  filter: blur(2px);
+}
+
+.blur-background {
+  transition: filter 300ms ease-in-out;
+}

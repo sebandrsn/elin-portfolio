@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
+import { MenuProvider } from '@/contexts/menu-context'
+import { AppContent } from '@/components/AppContent'
 
 export const metadata: Metadata = {
   title: 'Elin',
@@ -15,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
+        <MenuProvider>
+          <Header />
+          <AppContent>{children}</AppContent>
+        </MenuProvider>
       </body>
     </html>
   )
