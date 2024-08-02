@@ -1,12 +1,21 @@
+"use client";
+
 import Image from "next/image";
-import mountain from "@/public/images/jordan-steranka-snpFW42KR8I-unsplash.jpg";
-import forest from "@/public/images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpg";
+import mountainMobile from "@/public/images/mountains-mobile.jpg";
+import mountain from "@/public/images/mountains.jpg";
+import forestMobile from "@/public/images/forest-mobile.jpg";
+import forest from "@/public/images/forest.jpg";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 export default function Home() {
+  const mediaQuery = useMediaQuery("(max-width: 640px)");
+
   return (
     <>
       <div
-        style={{ backgroundImage: `url(${mountain.src})` }}
+        style={{
+          backgroundImage: `url(${mediaQuery.isMobile ? mountainMobile.src : mountain.src})`,
+        }}
         className="h-screen bg-fixed top-0"
       ></div>
       <div className="w-full bg-white h-96">
@@ -17,7 +26,9 @@ export default function Home() {
         a rutrum. Mauris et pulvinar ligula. Fusce aliquet aliquam placerat.
       </div>
       <div
-        style={{ backgroundImage: `url(${forest.src})` }}
+        style={{
+          backgroundImage: `url(${mediaQuery.isMobile ? forestMobile.src : forest.src})`,
+        }}
         className="h-screen bg-fixed"
       ></div>
     </>
