@@ -1,14 +1,29 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import useMediaQuery from '@/hooks/useMediaQuery'
-import Menu from '@/components/Menu'
+import Link from "next/link";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import Menu from "@/components/Menu";
+import { useEffect, useState } from "react";
 
 export default function Header() {
-  const mediaQuery = useMediaQuery('(max-width: 640px)')
+  const mediaQuery = useMediaQuery("(max-width: 640px)");
+  const scrollThreshold = 100;
+
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > scrollThreshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="bg-sky-500 top-0 z-10 w-full sticky">
+    <header
+      className={`${scrolled ? "bg-sky-500" : "bg-transparent"} top-0 z-10 w-full fixed`}
+    >
       <div className="flex flex-row justify-between items-center mx-4">
         <a
           href="https://www.instagram.com/elinsfotogalleri/"
@@ -26,25 +41,25 @@ export default function Header() {
         </a>
         {!mediaQuery.isMobile && (
           <div
-            className={`space-x-4 ${mediaQuery.loaded ? 'block' : 'hidden'}`}
+            className={`space-x-4 ${mediaQuery.loaded ? "block" : "hidden"}`}
           >
-            <Link href={'/'} className="hover:text-white text-black">
+            <Link href={"/"} className="hover:text-white text-black">
               home
             </Link>
-            <Link href={'/photos'} className="hover:text-white text-black">
+            <Link href={"/photos"} className="hover:text-white text-black">
               photos
             </Link>
-            <Link href={'/about'} className="hover:text-white text-black">
+            <Link href={"/about"} className="hover:text-white text-black">
               about me
             </Link>
-            <Link href={'/contact'} className="hover:text-white text-black">
+            <Link href={"/contact"} className="hover:text-white text-black">
               contact
             </Link>
           </div>
         )}
         {mediaQuery.isMobile && (
           <>
-            <Link href={'/'} className="text-black">
+            <Link href={"/"} className="text-white">
               elin åsedahl
             </Link>
             <Menu />
@@ -52,5 +67,5 @@ export default function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }
