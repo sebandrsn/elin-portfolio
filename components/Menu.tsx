@@ -13,7 +13,7 @@ export default function Menu() {
       >
         <div
           className={`${genericHamburgerLine} ${
-            isOpen ? 'rotate-45 translate-y-3 ' : 'opacity-100'
+            isOpen ? 'rotate-45 translate-y-3' : ''
           }`}
         />
         <div
@@ -21,16 +21,16 @@ export default function Menu() {
         />
         <div
           className={`${genericHamburgerLine} ${
-            isOpen ? '-rotate-45 -translate-y-3 ' : 'opacity-100'
+            isOpen ? '-rotate-45 -translate-y-3' : ''
           }`}
         />
       </button>
       <div
-        className={`fixed top-12 right-0 h-full bg-white transition-transform duration-300 ${
-          isOpen ? 'w-1/3 translate-x-0' : 'w-1/3 translate-x-full'
+        className={`fixed top-12 w-full bg-slate-500 right-0 duration-300 ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flext flex-col space-y-2 m-2">
+        <div className="flex flex-col items-center space-y-2 m-2">
           <div>
             <Link href={'/'} onClick={toggleMenu}>
               home

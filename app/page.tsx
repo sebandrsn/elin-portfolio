@@ -12,6 +12,7 @@ export default function Home() {
 
   return (
     <>
+    {mediaQuery.loaded && (<>
       <div
         style={{
           backgroundImage: `url(${mediaQuery.isMobile ? mountainMobile.src : mountain.src})`,
@@ -31,6 +32,8 @@ export default function Home() {
         }}
         className="h-screen bg-fixed"
       ></div>
+      </>)}
+    
     </>
   );
 }

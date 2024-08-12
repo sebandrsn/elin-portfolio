@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-800 text-neutral-400;
+  @apply bg-neutral-800;
 }
 
 .blur {
-  filter: blur(2px);
+  filter: blur(4px);
 }
 
 .blur-background {
