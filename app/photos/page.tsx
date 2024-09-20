@@ -1,3 +1,3 @@
-export default function Home() {
-  return <div>this is the photo page</div>
+export default function Photos() {
+  return <div>this is the photo page</div>;
 }

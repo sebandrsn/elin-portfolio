@@ -4,6 +4,7 @@ import Link from "next/link";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import Menu from "@/components/Menu";
 import { useEffect, useState } from "react";
+import { env } from "@/env";
 
 export default function Header() {
   const mediaQuery = useMediaQuery("(max-width: 640px)");
@@ -24,6 +25,7 @@ export default function Header() {
     <header
       className={`${scrolled ? "bg-sky-500" : "bg-transparent"} top-0 z-10 w-full fixed`}
     >
+      {env}
       <div className="flex flex-row justify-between items-center mx-4">
         <a
           href="https://www.instagram.com/elinsfotogalleri/"
@@ -39,32 +41,10 @@ export default function Header() {
             <path d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z" />
           </svg>
         </a>
-        {!mediaQuery.isMobile && (
-          <div
-            className={`space-x-4 ${mediaQuery.loaded ? "block" : "hidden"}`}
-          >
-            <Link href={"/"} className="hover:text-white text-black">
-              home
-            </Link>
-            <Link href={"/photos"} className="hover:text-white text-black">
-              photos
-            </Link>
-            <Link href={"/about"} className="hover:text-white text-black">
-              about me
-            </Link>
-            <Link href={"/contact"} className="hover:text-white text-black">
-              contact
-            </Link>
-          </div>
-        )}
-        {mediaQuery.isMobile && (
-          <>
-            <Link href={"/"} className="text-white">
-              elin åsedahl
-            </Link>
-            <Menu />
-          </>
-        )}
+        <Link href={"/"} className="text-white">
+          elin åsedahl
+        </Link>
+        <Menu />
       </div>
     </header>
   );
