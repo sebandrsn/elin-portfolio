@@ -25,7 +25,6 @@ export default function Header() {
     <header
       className={`${scrolled ? "bg-sky-500" : "bg-transparent"} top-0 z-10 w-full fixed`}
     >
-      {env}
       <div className="flex flex-row justify-between items-center mx-4">
         <a
           href="https://www.instagram.com/elinsfotogalleri/"
