@@ -4,7 +4,6 @@ import Link from "next/link";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import Menu from "@/components/Menu";
 import { useEffect, useState } from "react";
-import { env } from "@/env";
 
 export default function Header() {
   const mediaQuery = useMediaQuery("(max-width: 640px)");
