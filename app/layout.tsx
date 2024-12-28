@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { MenuProvider } from "@/contexts/menu-context";
 import { AppContent } from "@/components/AppContent";
 import Head from "next/head";
 

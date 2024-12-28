@@ -1,10 +1,8 @@
-import useMediaQuery from "@/hooks/useMediaQuery";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const mediaQuery = useMediaQuery("(max-width: 640px)");
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black transition ease transform duration-300`;
 
   const menuItems = [

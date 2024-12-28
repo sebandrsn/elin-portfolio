@@ -1,13 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import useMediaQuery from "@/hooks/useMediaQuery";
 import Menu from "@/components/Menu";
 import { useEffect, useState } from "react";
-import { env } from "@/env";
 
 export default function Header() {
-  const mediaQuery = useMediaQuery("(max-width: 640px)");
   const scrollThreshold = 100;
 
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -25,7 +22,6 @@ export default function Header() {
     <header
       className={`${scrolled ? "bg-sky-500" : "bg-transparent"} top-0 z-10 w-full fixed`}
     >
-      {env}
       <div className="flex flex-row justify-between items-center mx-4">
         <a
           href="https://www.instagram.com/elinsfotogalleri/"
