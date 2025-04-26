@@ -11,13 +11,13 @@ export default function Home() {
   return (
     <>
       <ResponsiveBackgroundImage
-        mobileImage={mountainMobile.src}
+        mobileImage={mountainMobile}
         desktopImage={mountain.src}
         className="top-0 h-screen bg-fixed"
       />
       <HorizontalScrollCarousel />
       <ResponsiveBackgroundImage
-        mobileImage={forestMobile.src}
+        mobileImage={forestMobile}
         desktopImage={forest.src}
         className="h-screen bg-fixed"
       />

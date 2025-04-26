@@ -6,8 +6,13 @@ interface CardProps {
 
 function Card({ image }: Readonly<CardProps>) {
   return (
-    <div>
-      <Image width={1000} height={1000} src={image.src} alt="Card image" />
+    <div className="flex-shrink-0 px-2">
+      <Image
+        width={image.width}
+        height={image.height}
+        src={image.src}
+        alt="Card image" // TODO: Add alt text
+      />
     </div>
   );
 }

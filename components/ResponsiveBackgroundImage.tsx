@@ -1,7 +1,9 @@
 "use client";
 
+import Image, { StaticImageData } from "next/image";
+
 interface ResponsiveBackgroundImageProps {
-  mobileImage: string;
+  mobileImage: StaticImageData;
   desktopImage: string;
   className: string;
 }
@@ -13,18 +15,15 @@ export default function ResponsiveBackgroundImage({
 }: Readonly<ResponsiveBackgroundImageProps>) {
   return (
     <>
-      <div
-        className={`sm:hidden ${className}`}
-        style={{
-          backgroundImage: `url(${mobileImage})`,
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
+      <Image
+        width={mobileImage.width ?? 200}
+        height={mobileImage.height ?? 200}
+        src={mobileImage}
+        alt="Mobile Background"
+        className={`block lg:hidden ${className}`}
       />
       <div
-        className={`hidden sm:block ${className}`}
+        className={`hidden lg:block ${className}`}
         style={{
           backgroundImage: `url(${desktopImage})`,
           backgroundAttachment: "fixed",
