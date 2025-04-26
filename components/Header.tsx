@@ -37,7 +37,7 @@ export default function Header() {
             <path d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z" />
           </svg>
         </a>
-        <Link href={"/"} className="text-white">
+        <Link href={"/"} className="text-white text-2xl">
           elin åsedahl
         </Link>
         <Menu />
