@@ -21,11 +21,11 @@ Ensure you have the following installed:
 
 ### Installation
 
-1. Install dependencies:
+Install dependencies:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 ### Development
 
