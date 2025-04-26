@@ -83,7 +83,9 @@ npm run lint
 
 ## Asset Usage Policy
 
-The photos and paintings featured on this portfolio are the intellectual property of the photographer and/or artist. These assets are **not** licensed for public use, reproduction, or distribution without explicit permission. Unauthorized use of these materials is strictly prohibited.
+Please note: The images currently displayed on this portfolio are temporary placeholders used solely for development and design purposes. These images are sourced from royalty-free platforms and are not representative of the final content.​
+
+Upon completion of the development phase, these placeholders will be replaced with original photographs created by Elin Åsedahl. All rights to these original images will be reserved, and unauthorized use, reproduction, or distribution will be strictly prohibited.​
 
 ## License
 
