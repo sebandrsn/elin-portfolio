@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Elin Portfolio
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It serves as a portfolio website showcasing projects, photos, and contact information.
+
+## Features
+
+- Built with **Next.js** for server-side rendering and static site generation.
+- Styled using **Tailwind CSS** for modern, responsive design.
+- Includes reusable components such as `Header`, `Menu`, `CardGallery`, and more.
+- Optimized for performance and accessibility.
+- Fully responsive design for mobile, tablet, and desktop.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+### Installation
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+### Development
+
+To start the development server, run:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To build the project for production, run:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+After building, you can start the production server with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Linting
 
-## Deploy on Vercel
+To check for linting issues, run:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Project Structure
+
+```
+├── app/                # Application routes and pages
+├── components/         # Reusable React components
+├── public/             # Static assets
+├── styles/             # Global styles
+├── .next/              # Build output (generated)
+├── tailwind.config.ts  # Tailwind CSS configuration
+├── tsconfig.json       # TypeScript configuration
+└── package.json        # Project metadata and dependencies
+```
+
+## Technologies Used
+
+- **Next.js**: Framework for React applications.
+- **React**: JavaScript library for building user interfaces.
+- **Tailwind CSS**: Utility-first CSS framework.
+- **TypeScript**: Strongly typed programming language.
+- **ESLint**: Linting tool for JavaScript and TypeScript.
+- **Prettier**: Code formatter.
+
+## Asset Usage Policy
+
+The photos and paintings featured on this portfolio are the intellectual property of the photographer and/or artist. These assets are **not** licensed for public use, reproduction, or distribution without explicit permission. Unauthorized use of these materials is strictly prohibited.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
