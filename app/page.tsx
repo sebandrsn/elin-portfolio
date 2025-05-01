@@ -6,6 +6,7 @@ import forestMobile from "@/public/images/forest-mobile.jpg";
 import forest from "@/public/images/forest.jpg";
 import ResponsiveBackgroundImage from "@/components/ResponsiveBackgroundImage";
 import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
+import CardGallery from "@/components/CardGallery";
 
 export default function Home() {
   return (
@@ -15,7 +16,8 @@ export default function Home() {
         desktopImage={mountain.src}
         className="top-0 h-screen bg-fixed"
       />
-      <HorizontalScrollCarousel />
+      {/* <HorizontalScrollCarousel /> */}
+      <CardGallery />
       <ResponsiveBackgroundImage
         mobileImage={forestMobile}
         desktopImage={forest.src}
