@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@storyblok/react": "^4.6.1",
     "dotenv": "^16.4.5",
     "motion": "^12.9.2",
     "next": "^15.1.3",
