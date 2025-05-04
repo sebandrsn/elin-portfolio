@@ -1,28 +1,18 @@
-"use client";
+import { ISbStoriesParams, StoryblokClient } from "@storyblok/react";
+import { getStoryblokApi, StoryblokStory } from "@storyblok/react/rsc";
 
-import mountainMobile from "@/public/images/mountains-mobile.jpg";
-import mountain from "@/public/images/mountains.jpg";
-import forestMobile from "@/public/images/forest-mobile.jpg";
-import forest from "@/public/images/forest.jpg";
-import ResponsiveBackgroundImage from "@/components/ResponsiveBackgroundImage";
-import { HorizontalScrollCarousel } from "@/components/HorizontalScrollCarousel";
-import CardGallery from "@/components/CardGallery";
+export const revalidate = 86400; // Revalidate every 24 hours
 
-export default function Home() {
-  return (
-    <>
-      <ResponsiveBackgroundImage
-        mobileImage={mountainMobile}
-        desktopImage={mountain.src}
-        className="top-0 h-screen bg-fixed"
-      />
-      {/* <HorizontalScrollCarousel /> */}
-      <CardGallery />
-      <ResponsiveBackgroundImage
-        mobileImage={forestMobile}
-        desktopImage={forest.src}
-        className="h-screen bg-fixed"
-      />
-    </>
-  );
+export default async function Home() {
+  const story = await fetchHomePage();
+
+  return <StoryblokStory story={story} />;
+}
+
+async function fetchHomePage() {
+  let sbParams: ISbStoriesParams = { version: "published" };
+
+  const storyblokApi: StoryblokClient = getStoryblokApi();
+  const home = await storyblokApi.get(`cdn/stories/home`, sbParams);
+  return home.data.story;
 }

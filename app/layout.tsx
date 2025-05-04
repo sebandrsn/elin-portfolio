@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { AppContent } from "@/components/AppContent";
 import Head from "next/head";
+import StoryblokProvider from "@/components/StoryblokProvider";
+import { getStoryblokApi } from "@/lib/storyblok";
 
 export const metadata: Metadata = {
   title: "Elin",
   description: "A photographers portfolio",
 };
+
+try {
+  // Initialize Storyblok API client
+  getStoryblokApi();
+} catch (error) {
+  console.error("Error initializing Storyblok API client:", error);
+}
 
 export default function RootLayout({
   children,
@@ -15,14 +23,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-      <body>
-        <Header />
-        <AppContent>{children}</AppContent>
-      </body>
-    </html>
+    <StoryblokProvider>
+      <html lang="en">
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+        </Head>
+        <body>
+          <Header />
+          {children}
+        </body>
+      </html>
+    </StoryblokProvider>
   );
 }

@@ -3,13 +3,10 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-700;
+  @apply bg-white;
 }
-
-.blur {
-  filter: blur(4px);
-}
-
-.blur-background {
-  transition: filter 300ms ease-in-out;
+@layer base {
+  body {
+    @apply font-playfair text-gray-800;
+  }
 }

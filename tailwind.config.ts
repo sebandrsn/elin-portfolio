@@ -6,6 +6,14 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        reenie: ['"Reenie Beanie"', "cursive"],
+        playfair: ['"Playfair Display"', "serif"],
+      },
+    },
+  },
   plugins: [require("@tailwindcss/typography")],
 };
 export default config;

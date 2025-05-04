@@ -7,21 +7,21 @@ export default function Menu() {
 
   const menuItems = [
     { href: "/", text: "Home" },
-    { href: "/photos", text: "Photos" },
+    { href: "/gallery", text: "Gallery" },
     { href: "/about", text: "About" },
     { href: "/contact", text: "Contact" },
   ];
 
   return (
-    <div className="relative">
+    <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-col h-12 w-12 justify-center items-center z-20 relative"
+        className="relative z-20 flex h-12 w-12 flex-col items-center justify-center"
         aria-label="Toggle menu"
       >
         <div
           className={`${genericHamburgerLine} ${
-            isOpen ? "rotate-45 translate-y-3" : ""
+            isOpen ? "translate-y-3 rotate-45" : ""
           }`}
         />
         <div
@@ -29,15 +29,15 @@ export default function Menu() {
         />
         <div
           className={`${genericHamburgerLine} ${
-            isOpen ? "-rotate-45 -translate-y-3" : ""
+            isOpen ? "-translate-y-3 -rotate-45" : ""
           }`}
         />
       </button>
       <div
         className={`fixed inset-0 flex items-center justify-center backdrop-blur-md transition-all duration-1000 ${
           isOpen
-            ? "opacity-100 z-10 visible pointer-events-auto"
-            : "opacity-0 z-[-1] invisible pointer-events-none"
+            ? "pointer-events-auto visible z-10 opacity-100"
+            : "pointer-events-none invisible z-[-1] opacity-0"
         }`}
       >
         <div className="flex flex-col items-center space-y-6">
@@ -46,9 +46,9 @@ export default function Menu() {
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className={`text-white text-2xl hover:text-gray-200 transition-opacity duration-1000 ease-in-out ${
-                isOpen ? "opacity-100" : "opacity-0"
-              }`}
+              className={
+                "text-2xl text-black transition-opacity duration-1000 ease-in-out hover:text-gray-200"
+              }
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {item.text}
