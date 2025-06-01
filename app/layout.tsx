@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import Head from "next/head";
 import StoryblokProvider from "@/components/StoryblokProvider";
 import { getStoryblokApi } from "@/lib/storyblok";
+import { Poppins } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Elin",
   description: "A photographers portfolio",
 };
+
+const poppins = Poppins({
+  weight: ["400"],
+  style: "normal",
+  subsets: ["latin"],
+});
 
 try {
   // Initialize Storyblok API client
@@ -24,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <StoryblokProvider>
-      <html lang="en">
+      <html lang="en" className={poppins.className}>
         <Head>
           <meta
             name="viewport"

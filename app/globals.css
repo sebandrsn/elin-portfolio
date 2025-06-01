@@ -5,8 +5,3 @@
 body {
   @apply bg-white;
 }
-@layer base {
-  body {
-    @apply font-playfair text-gray-800;
-  }
-}
