@@ -5,3 +5,8 @@
 body {
   @apply bg-white;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000000 !important;
+}
