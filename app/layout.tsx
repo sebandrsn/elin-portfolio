@@ -5,6 +5,7 @@ import Head from "next/head";
 import StoryblokProvider from "@/components/StoryblokProvider";
 import { getStoryblokApi } from "@/service/storyblok";
 import { Poppins } from "next/font/google";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Elin",
@@ -27,7 +28,7 @@ try {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <StoryblokProvider>

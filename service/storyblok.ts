@@ -9,7 +9,7 @@ import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
 import HeroSlider from "@/components/HeroSlider";
 
 export const getStoryblokApi = storyblokInit({
-  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
+  accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
   use: [apiPlugin],
   components: {
     page: Page,
