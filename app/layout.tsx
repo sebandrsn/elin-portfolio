@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import Head from "next/head";
 import StoryblokProvider from "@/components/StoryblokProvider";
-import { getStoryblokApi } from "@/lib/storyblok";
+import { getStoryblokApi } from "@/service/storyblok";
 import { Poppins } from "next/font/google";
 
 export const metadata: Metadata = {
