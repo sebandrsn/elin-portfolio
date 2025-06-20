@@ -10,7 +10,7 @@ const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
-export default [
+const eslintConfig = [
   // ESLint's recommended base rules
   js.configs.recommended,
 
@@ -72,3 +72,5 @@ export default [
     },
   }),
 ];
+
+export default eslintConfig;
