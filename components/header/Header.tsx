@@ -2,39 +2,24 @@
 
 import Link from "next/link";
 import Menu from "@/components/header/Menu";
-import { useEffect, useState } from "react";
 import InstagramIcon from "./InstagramIcon";
 import EmailIcon from "./EmailIcon";
 
 export default function Header() {
-  const scrollThreshold = 100;
-
-  const [scrolled, setScrolled] = useState<boolean>(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > scrollThreshold);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className={`${scrolled ? "bg-white duration-1000" : "bg-transparent pt-2"} fixed top-0 z-10 w-full`}
-    >
+    <header className="fixed top-0 z-10 w-full bg-white">
       {/* DESKTOP */}
-      <div className="hidden justify-center lg:flex lg:flex-row">
-        <InstagramIcon className="pt-1" />
-        <EmailIcon className="pt-1" />
-        <div className="flex flex-col">
-          <div className="flex items-center justify-center">
-            <Link href={"/"} className="text-xl text-black md:text-4xl">
-              elin åsedahl
-            </Link>
-          </div>
+      <div className="hidden h-20 w-full grid-cols-3 items-center lg:grid">
+        <div />
+        <div className="flex flex-col items-center">
+          <Link href={"/"} className="text-xl text-black md:text-4xl">
+            elin åsedahl
+          </Link>
           <Menu />
+        </div>
+        <div className="flex flex-row items-center justify-end gap-2 pr-6">
+          <InstagramIcon className="pt-1" />
+          <EmailIcon className="pt-1" />
         </div>
       </div>
 
