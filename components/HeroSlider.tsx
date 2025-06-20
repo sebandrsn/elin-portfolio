@@ -26,10 +26,7 @@ export default function HeroSlider({ blok }: any) {
   return (
     <div className="relative h-screen w-full">
       <Swiper
-        pagination={{
-          dynamicBullets: true,
-        }}
-        navigation={true}
+        navigation={false}
         loop={true}
         effect={"fade"}
         modules={[EffectFade, Pagination, Navigation]}
