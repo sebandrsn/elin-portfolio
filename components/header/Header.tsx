@@ -24,7 +24,7 @@ export default function Header() {
       </div>
 
       {/* MOBILE */}
-      <div className="mx-2 flex flex-row items-center justify-between lg:hidden">
+      <div className="mx-2 flex h-16 flex-row items-center justify-between lg:hidden">
         <InstagramIcon className="pt-1" />
         <Link href={"/"} className="text-xl text-black md:text-4xl">
           elin åsedahl

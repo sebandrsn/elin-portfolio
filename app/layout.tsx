@@ -6,6 +6,7 @@ import StoryblokProvider from "@/components/StoryblokProvider";
 import { getStoryblokApi } from "@/service/storyblok";
 import { Poppins } from "next/font/google";
 import { ReactNode } from "react";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Elin",
@@ -42,6 +43,7 @@ export default function RootLayout({
         <body className="lg:pt-20">
           <Header />
           {children}
+          <footer><Footer /></footer>
         </body>
       </html>
     </StoryblokProvider>
