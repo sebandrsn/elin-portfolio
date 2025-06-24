@@ -60,7 +60,7 @@ export default function Menu() {
       {/* DESKTOP */}
       <ul className="hidden space-x-6 md:flex">
         {menuItems.map((item) => (
-          <li key={item.href} className="hover:border-b-2 hover:border-black">
+          <li key={item.href}>
             <Link href={item.href}>{item.text}</Link>
           </li>
         ))}
