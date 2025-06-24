@@ -24,7 +24,7 @@ function AutoAdvance() {
 
 export default function HeroSlider({ blok }: any) {
   return (
-    <div className="relative h-screen w-full">
+    <div className="relative w-full" style={{ height: "calc(100vh - 5rem)" }}>
       <Swiper
         navigation={false}
         loop={true}
