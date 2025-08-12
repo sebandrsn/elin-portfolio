@@ -1,8 +1,8 @@
 import { StoryblokServerComponent } from "@storyblok/react/rsc";
 
-export default function GallerySection({ blok, index }: any) {
+export default function ImageTextGrid({ blok }: any) {
   return (
-    <section className="my-10 flex flex-row flex-wrap items-start justify-center gap-6">
+    <section className="flex h-full flex-col">
       {blok.items.map((item: any, index: number) => {
         return (
           <StoryblokServerComponent blok={item} index={index} key={item._uid} />
