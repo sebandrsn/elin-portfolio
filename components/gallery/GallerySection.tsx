@@ -1,13 +1,25 @@
-import { StoryblokServerComponent } from "@storyblok/react/rsc";
+"use client";
+
+import { StoryblokComponent } from "@storyblok/react";
+import Masonry from "react-masonry-css";
 
 export default function GallerySection({ blok, index }: any) {
+  const breakpointColumnsObj = {
+    default: 3,
+    1024: 2,
+    640: 1,
+  };
   return (
-    <section className="my-10 flex flex-row flex-wrap items-start justify-center gap-6">
-      {blok.items.map((item: any, index: number) => {
-        return (
-          <StoryblokServerComponent blok={item} index={index} key={item._uid} />
-        );
-      })}
-    </section>
+    <div className="my-10 px-2">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="masonry-grid"
+        columnClassName="masonry-column"
+      >
+        {blok.items.map((item: any, idx: number) => (
+          <StoryblokComponent blok={item} index={idx} key={item._uid} />
+        ))}
+      </Masonry>
+    </div>
   );
 }

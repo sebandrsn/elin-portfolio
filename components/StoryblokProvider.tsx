@@ -1,10 +1,13 @@
 "use client";
 
-import { storyblokInit } from "@storyblok/react/rsc";
+import { storyblokInit } from "@storyblok/react";
+import GalleryItem from "@/components/gallery/GalleryItem";
 import { PropsWithChildren } from "react";
 
 storyblokInit({
-  components: {},
+  components: {
+    gallery_item: GalleryItem,
+  },
   enableFallbackComponent: true,
 });
 
