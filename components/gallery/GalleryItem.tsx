@@ -13,12 +13,12 @@ export default function GalleryItem({ blok }: any) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 1, delay: 0.2 }}
       variants={{
-        visible: { opacity: 1, y: 0 },
-        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
       }}
-      className="cursor-pointer overflow-hidden"
+      className="m-1 my-2 cursor-pointer overflow-hidden"
     >
       <Image
         src={blok.thumbnail.filename}
