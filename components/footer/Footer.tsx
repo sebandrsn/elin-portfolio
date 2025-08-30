@@ -6,9 +6,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const footerText = `© ${currentYear} Elin Åsedahl. Alla rättigheter förbehållna.`;
   return (
-    <div className="h-48 bg-black text-white">
-      <div className="flex h-full flex-col justify-between">
-        <div className="mt-8 flex flex-row px-80">
+    <div className="h-auto bg-black text-white lg:h-48">
+      <div className="mx-auto flex h-full w-1/2 flex-col justify-between">
+        <div className="my-9 flex flex-col gap-11 lg:mt-8 lg:flex-row">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -18,7 +18,7 @@ export default function Footer() {
               visible: { opacity: 1, y: 0 },
               hidden: { opacity: 0, y: 30 },
             }}
-            className="flex w-1/2 flex-col items-center justify-center text-4xl"
+            className="flex flex-col items-center justify-center text-4xl lg:w-1/2"
           >
             Contact
             <a
@@ -37,7 +37,7 @@ export default function Footer() {
               visible: { opacity: 1, y: 0 },
               hidden: { opacity: 0, y: 30 },
             }}
-            className="flex w-1/2 flex-col items-center justify-center text-4xl"
+            className="flex flex-col items-center justify-center text-4xl lg:w-1/2"
           >
             Social
             <a
@@ -50,7 +50,12 @@ export default function Footer() {
             </a>
           </motion.div>
         </div>
-        <div className="flex justify-center pb-4">{footerText}</div>
+        <div className="hidden justify-center lg:flex lg:pb-4">
+          {footerText}
+        </div>
+      </div>
+      <div className="mt-7 w-full bg-black pb-5 text-center text-white lg:hidden">
+        {footerText}
       </div>
     </div>
   );
