@@ -1,5 +1,6 @@
+import { getStoryblokApi } from "@/service/storyblok";
 import { ISbStoriesParams, StoryblokClient } from "@storyblok/react";
-import { getStoryblokApi, StoryblokStory } from "@storyblok/react/rsc";
+import { StoryblokStory } from "@storyblok/react/rsc";
 
 export const revalidate = 86400; // Revalidate every 24 hours
 

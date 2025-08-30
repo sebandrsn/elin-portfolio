@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Menu from "@/components/header/Menu";
 import InstagramIcon from "./InstagramIcon";

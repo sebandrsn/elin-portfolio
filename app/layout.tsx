@@ -42,7 +42,7 @@ export default function RootLayout({
         </Head>
         <body className="lg:pt-20">
           <Header />
-          <main className="relative min-h-screen">{children}</main>
+          <main>{children}</main>
           <footer>
             <Footer />
           </footer>
