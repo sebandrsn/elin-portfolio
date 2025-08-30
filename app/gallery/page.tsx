@@ -1,12 +1,18 @@
 import { ISbStoriesParams, StoryblokClient } from "@storyblok/react";
 import { getStoryblokApi, StoryblokStory } from "@storyblok/react/rsc";
+import { Suspense } from "react";
+import GallerySkeleton from "@/components/gallery/GallerySkeleton";
 
 export const revalidate = 86400; // Revalidate every 24 hours
 
 export default async function Gallery() {
   const story = await fetchGalleryPage();
 
-  return <StoryblokStory story={story} />;
+  return (
+    <Suspense fallback={<GallerySkeleton />}>
+      <StoryblokStory story={story} />
+    </Suspense>
+  );
 }
 
 async function fetchGalleryPage() {

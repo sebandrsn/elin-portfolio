@@ -18,14 +18,15 @@ export default function GalleryItem({ blok }: any) {
         visible: { opacity: 1, y: 0 },
         hidden: { opacity: 0, y: 30 },
       }}
-      className="flex cursor-pointer items-center justify-center overflow-hidden"
+      className="cursor-pointer overflow-hidden"
     >
       <Image
         src={blok.thumbnail.filename}
         alt={blok.thumbnail.alt || blok.alt || "Gallery image"}
         width={dimensions.width}
         height={dimensions.height}
-        className="max-h-[500px] w-auto object-contain transition duration-200 hover:brightness-110"
+        className="h-auto w-full object-cover transition duration-200 hover:scale-105"
+        style={{ display: "block" }}
       />
     </motion.div>
   );

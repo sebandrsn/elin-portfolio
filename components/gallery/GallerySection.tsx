@@ -10,11 +10,11 @@ export default function GallerySection({ blok, index }: any) {
     640: 1,
   };
   return (
-    <div className="my-10 px-2">
+    <div className="my-10 px-0">
       <Masonry
         breakpointCols={breakpointColumnsObj}
-        className="masonry-grid"
-        columnClassName="masonry-column"
+        className="masonry-grid gap-0"
+        columnClassName="masonry-column gap-0"
       >
         {blok.items.map((item: any, idx: number) => (
           <StoryblokComponent blok={item} index={idx} key={item._uid} />

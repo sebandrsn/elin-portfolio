@@ -12,13 +12,13 @@ body {
 
 .masonry-grid {
   display: flex;
-  margin-left: -1rem; /* gutter size offset */
-  width: auto;
+  margin-left: -8px; /* gutter size offset */
+  width: 100%;
 }
 .masonry-column {
-  padding-left: 1rem; /* gutter size */
+  padding-left: 8px; /* gutter size */
   background-clip: padding-box;
 }
 .masonry-column > * {
-  margin-bottom: 1rem;
+  margin-bottom: 8px;
 }

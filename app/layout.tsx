@@ -42,8 +42,10 @@ export default function RootLayout({
         </Head>
         <body className="lg:pt-20">
           <Header />
-          {children}
-          <footer><Footer /></footer>
+          <main className="relative min-h-screen">{children}</main>
+          <footer>
+            <Footer />
+          </footer>
         </body>
       </html>
     </StoryblokProvider>
