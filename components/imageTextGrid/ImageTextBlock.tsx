@@ -26,22 +26,14 @@ export default function ImageTextBlock({ blok, index }: any) {
   return (
     <div className="flex flex-col lg:h-[60vh] lg:flex-row lg:overflow-hidden">
       {index === 1 && desktopSection}
-      <div className="hidden flex-none lg:block lg:w-1/2">
+      <div className="h-full w-full flex-none lg:w-1/2">
         <Image
+          src={blok.image.filename}
+          alt={blok.image.alt}
           width={2100}
           height={1400}
-          src={blok.image_desktop.filename}
-          alt={blok.image_desktop.alt}
           className="h-full w-full object-cover"
-        />
-      </div>
-      <div className="flex flex-none lg:hidden lg:w-1/2">
-        <Image
-          width={360}
-          height={640}
-          src={blok.image_mobile.filename}
-          alt={blok.image_mobile.alt}
-          className="h-full w-full object-cover"
+          sizes="(max-width: 1023px) 100vw, 1050px"
         />
       </div>
       {(index === 0 || index === 2) && desktopSection}

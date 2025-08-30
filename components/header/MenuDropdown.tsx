@@ -1,19 +1,9 @@
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
+import { MenuType } from "./Menu";
 
-export type SubmenuItem = { slug: string; label: string };
-export type MenuDropdownProps = {
-  slug: string;
-  label: string;
-  sub_menu: SubmenuItem[];
-};
-
-export function MenuDropdown({
-  slug,
-  label,
-  sub_menu,
-}: Readonly<MenuDropdownProps>) {
+export function MenuDropdown({ slug, label, sub_menu }: Readonly<MenuType>) {
   const [open, setOpen] = useState(false);
   return (
     <li
@@ -22,7 +12,7 @@ export function MenuDropdown({
       onMouseLeave={() => setOpen(false)}
     >
       <div className="flex flex-col items-center">
-        <Link href={slug}>{label}</Link>
+        <span className="cursor-pointer">{label}</span>
         <AnimatePresence>
           {open && (
             <motion.div
@@ -32,7 +22,7 @@ export function MenuDropdown({
               transition={{ duration: 0.3 }}
               className="absolute z-20 mt-6 flex flex-row space-x-6"
             >
-              {sub_menu.map((sub) => (
+              {sub_menu?.map((sub) => (
                 <Link
                   key={sub.slug}
                   href={sub.slug}
