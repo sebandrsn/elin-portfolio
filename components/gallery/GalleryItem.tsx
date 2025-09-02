@@ -1,5 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { motion } from "motion/react";
 
 export default function GalleryItem({ blok }: any) {
   const assetUrl = blok.image.filename;

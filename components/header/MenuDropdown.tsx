@@ -1,9 +1,9 @@
-import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 import { MenuType } from "./Menu";
+import { AnimatePresence, motion } from "framer-motion";
 
-export function MenuDropdown({ slug, label, sub_menu }: Readonly<MenuType>) {
+export function MenuDropdown({ label, sub_menu }: Readonly<MenuType>) {
   const [open, setOpen] = useState(false);
   return (
     <li
