@@ -6,17 +6,17 @@ export default function FullscreenImage({
 }: {
   readonly blok: FullscreenImageType;
 }) {
-  if (!blok.image.filename || !blok.image.alt) {
+  if (!blok.image.filename) {
     return null;
   }
 
   return (
     <Image
       src={blok.image.filename}
-      alt={blok.image.alt}
+      alt={blok.image.alt ?? "Fullscreen image"}
       width={2100}
       height={1400}
-      className="w/full h-auto"
+      className="h-auto w-full"
       loading="lazy"
       sizes="(max-width: 1023px) 100vw, 2100px"
     />

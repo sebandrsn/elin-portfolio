@@ -11,7 +11,7 @@ export default function ImageTextBlock({
   readonly blok: ImageTextBlockType;
   readonly index: number;
 }) {
-  if (!blok.image.filename || !blok.image.alt) {
+  if (!blok.image.filename) {
     return null;
   }
 
@@ -40,7 +40,7 @@ export default function ImageTextBlock({
       <div className="h-full w-full flex-none lg:w-1/2">
         <Image
           src={blok.image.filename}
-          alt={blok.image.alt}
+          alt={blok.image.alt ?? "Image text block"}
           width={2100}
           height={1400}
           className="h-full w-full object-cover"

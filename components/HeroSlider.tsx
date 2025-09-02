@@ -46,12 +46,12 @@ export default function HeroSlider({
       >
         <AutoAdvance />
         {blok.heroes
-          .filter((hero: HeroType) => hero.image?.filename && hero.image?.alt)
+          .filter((hero: HeroType) => hero.image?.filename)
           .map((hero: HeroType) => (
             <SwiperSlide key={hero._uid} className="w/full relative h-full">
               <Image
                 src={hero.image.filename!}
-                alt={hero.image.alt!}
+                alt={hero.image.alt ?? "Hero image"}
                 fill
                 className="object-cover"
                 loading="eager"
