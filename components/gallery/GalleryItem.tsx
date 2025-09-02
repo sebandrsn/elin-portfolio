@@ -2,12 +2,22 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { GalleryItem as GalleryItemType } from "@/.storyblok/types/337287/storyblok-components";
 
-export default function GalleryItem({ blok }: any) {
+export default function GalleryItem({
+  blok,
+}: {
+  readonly blok: GalleryItemType;
+}) {
+  if (!blok.image?.filename) {
+    return null;
+  }
+
   const assetUrl = blok.image.filename;
+  const [widthStr, heightStr] = assetUrl.split("/")[5].split("x");
   const dimensions = {
-    width: assetUrl.split("/")[5].split("x")[0],
-    height: assetUrl.split("/")[5].split("x")[1],
+    width: parseInt(widthStr, 10),
+    height: parseInt(heightStr, 10),
   };
 
   return (

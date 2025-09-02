@@ -1,8 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { InfoItem as InfoItemType } from "@/.storyblok/types/337287/storyblok-components";
 
-export default function InfoSection({ blok }: any) {
+export default function InfoItem({ blok }: { readonly blok: InfoItemType }) {
+  if (!blok.title || !blok.description) {
+    return null;
+  }
+
   return (
     <motion.section
       initial="hidden"

@@ -2,8 +2,19 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ImageTextBlock as ImageTextBlockType } from "@/.storyblok/types/337287/storyblok-components";
 
-export default function ImageTextBlock({ blok, index }: any) {
+export default function ImageTextBlock({
+  blok,
+  index,
+}: {
+  readonly blok: ImageTextBlockType;
+  readonly index: number;
+}) {
+  if (!blok.image.filename || !blok.image.alt) {
+    return null;
+  }
+
   const desktopSection = (
     <div className="hidden bg-slate-200 lg:flex lg:w-1/2 lg:items-center">
       <motion.section

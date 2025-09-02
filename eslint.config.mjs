@@ -60,6 +60,8 @@ const eslintConfig = [
       "dist/**",
       "build/**",
       "public/**",
+      ".storyblok/**",
+      "next-env.d.ts"
     ],
   },
 

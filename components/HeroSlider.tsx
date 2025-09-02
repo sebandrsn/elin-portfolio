@@ -3,6 +3,10 @@
 import { useEffect } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import Image from "next/image";
+import {
+  HeroSlider as HeroSliderType,
+  Hero as HeroType,
+} from "@/.storyblok/types/337287/storyblok-components";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -22,7 +26,15 @@ function AutoAdvance() {
   return null;
 }
 
-export default function HeroSlider({ blok }: any) {
+export default function HeroSlider({
+  blok,
+}: {
+  readonly blok: HeroSliderType;
+}) {
+  if (!blok.heroes || blok.heroes.length === 0) {
+    return null;
+  }
+
   return (
     <div className="relative w-full" style={{ height: "calc(100vh - 5rem)" }}>
       <Swiper
@@ -33,18 +45,20 @@ export default function HeroSlider({ blok }: any) {
         className="h-full w-full"
       >
         <AutoAdvance />
-        {blok.heroes.map((hero: any) => (
-          <SwiperSlide key={hero._uid} className="relative h-full w-full">
-            <Image
-              src={hero.image.filename}
-              alt={hero.image.alt}
-              fill
-              className="object-cover"
-              loading="eager"
-              priority
-            />
-          </SwiperSlide>
-        ))}
+        {blok.heroes
+          .filter((hero: HeroType) => hero.image?.filename && hero.image?.alt)
+          .map((hero: HeroType) => (
+            <SwiperSlide key={hero._uid} className="w/full relative h-full">
+              <Image
+                src={hero.image.filename!}
+                alt={hero.image.alt!}
+                fill
+                className="object-cover"
+                loading="eager"
+                priority
+              />
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );

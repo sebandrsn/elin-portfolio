@@ -1,0 +1,3 @@
+.storyblok/
+next-env.d.ts
+eslint.config.mjs
