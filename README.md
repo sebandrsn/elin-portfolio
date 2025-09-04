@@ -59,6 +59,15 @@ To check for linting issues, run:
 npm run lint
 ```
 
+### Generate Storyblok types
+
+To generate Storyblok types, run:
+
+```bash
+storyblok types generate --space <spaceId>
+
+```
+
 ## Project Structure
 
 ```
