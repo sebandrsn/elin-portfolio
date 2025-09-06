@@ -40,12 +40,10 @@ export default function RootLayout({
             content="width=device-width, initial-scale=1.0"
           />
         </Head>
-        <body className="lg:pt-20">
+        <body className="flex min-h-screen flex-col lg:pt-20">
           <Header />
-          <main>{children}</main>
-          <footer>
-            <Footer />
-          </footer>
+          <main className="flex-1">{children}</main>
+          <Footer />
         </body>
       </html>
     </StoryblokProvider>
