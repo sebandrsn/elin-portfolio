@@ -136,22 +136,36 @@ export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
               <ul className="flex flex-col items-center space-y-6">
                 {menu.map((item, index) =>
                   item.sub_menu ? (
-                    <SubMenu
+                    <motion.div
                       key={item.label}
-                      label={item.label}
-                      sub_menu={item.sub_menu}
-                      handleClick={() => setIsOpen(false)}
-                    />
-                  ) : (
-                    <li
-                      key={item.label}
-                      className={`text-2xl text-black transition-opacity duration-1000 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
-                      style={{ transitionDelay: `${index * 200}ms` }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: index * 0.1 }}
                     >
-                      <Link href={item.slug} onClick={() => setIsOpen(false)}>
-                        {item.label}
-                      </Link>
-                    </li>
+                      <SubMenu
+                        key={item.label}
+                        label={item.label}
+                        sub_menu={item.sub_menu}
+                        handleClick={() => setIsOpen(false)}
+                      />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <li
+                        key={item.label}
+                        className={`text-2xl text-black transition-opacity duration-1000 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
+                        style={{ transitionDelay: `${index * 200}ms` }}
+                      >
+                        <Link href={item.slug} onClick={() => setIsOpen(false)}>
+                          {item.label}
+                        </Link>
+                      </li>
+                    </motion.div>
                   ),
                 )}
               </ul>
