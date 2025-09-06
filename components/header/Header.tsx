@@ -5,6 +5,8 @@ import EmailIcon from "./EmailIcon";
 import { ISbStoriesParams, StoryblokClient } from "@storyblok/react/rsc";
 import { getStoryblokApi } from "@/service/storyblok";
 
+const COMPANY_NAME = "pixel&pensel";
+
 export default async function Header() {
   let menu: MenuType[] = [];
   try {
@@ -19,11 +21,11 @@ export default async function Header() {
   return (
     <header className="fixed top-0 z-10 w-full bg-white">
       {/* DESKTOP */}
-      <div className="hidden h-28 w-full grid-cols-3 items-center lg:grid">
+      <div className="hidden h-full w-full grid-cols-3 lg:grid">
         <div />
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center gap-y-4">
           <Link href={"/"} className="text-xl text-black md:text-4xl">
-            elin åsedahl
+            {COMPANY_NAME}
           </Link>
           <Menu menu={menu} />
         </div>
@@ -37,7 +39,7 @@ export default async function Header() {
       <div className="mx-2 flex h-16 flex-row items-center justify-between lg:hidden">
         <InstagramIcon className="pt-1" />
         <Link href={"/"} className="text-xl text-black md:text-4xl">
-          elin åsedahl
+          {COMPANY_NAME}
         </Link>
         <Menu menu={menu} />
       </div>
