@@ -40,7 +40,7 @@ export default function RootLayout({
             content="width=device-width, initial-scale=1.0"
           />
         </Head>
-        <body className="flex min-h-screen flex-col lg:pt-20">
+        <body className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

@@ -3,16 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { MenuDropdown } from "./MenuDropdown";
+import { AnimatePresence, motion } from "framer-motion";
 
 export type MenuType = {
   slug: string;
   label: string;
   sub_menu?: SubmenuItemType[];
 };
-type SubmenuItemType = { slug: string; label: string };
+export type SubmenuItemType = { slug: string; label: string };
 
 export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState<boolean>(false);
+  const [menuItem, setMenuItem] = useState<MenuType | undefined>(undefined);
   const menuRef = useRef<HTMLDivElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -61,14 +64,23 @@ export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
   return (
     <nav className="relative">
       {/* DESKTOP */}
-      <ul className="hidden space-x-6 md:flex">
+      <ul className="hidden space-x-6 md:flex md:justify-center">
         {menu.map((item) =>
           item.sub_menu ? (
-            <MenuDropdown
-              key={item.label}
-              label={item.label}
-              sub_menu={item.sub_menu}
-            />
+            <li key={item.slug}>
+              <button
+                onMouseEnter={() => {
+                  setIsSubmenuOpen(true);
+                  setMenuItem(item);
+                }}
+                onMouseLeave={() => {
+                  setIsSubmenuOpen(false);
+                }}
+                className="cursor-pointer"
+              >
+                {item.label}
+              </button>
+            </li>
           ) : (
             <li key={item.slug}>
               <Link href={item.slug}>{item.label}</Link>
@@ -76,6 +88,21 @@ export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
           ),
         )}
       </ul>
+      <AnimatePresence>
+        {isSubmenuOpen && menuItem?.sub_menu && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="absolute flex w-full justify-center bg-white"
+            onMouseEnter={() => setIsSubmenuOpen(true)}
+            onMouseLeave={() => setIsSubmenuOpen(false)}
+          >
+            <MenuDropdown key={menuItem.label} sub_menu={menuItem.sub_menu} />
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* MOBILE */}
       <div className="md:hidden">
         <button
@@ -116,7 +143,7 @@ export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
                   label={item.label}
                   sub_menu={item.sub_menu}
                   index={index}
-                  isOpen={isOpen}
+                  handleClick={() => setIsOpen(false)}
                 />
               ) : (
                 <li
@@ -124,13 +151,9 @@ export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
                   className={`text-2xl text-black transition-opacity duration-1000 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
-                  {item.slug ? (
-                    <Link href={item.slug} onClick={() => setIsOpen(false)}>
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <span>{item.label}</span>
-                  )}
+                  <Link href={item.slug} onClick={() => setIsOpen(false)}>
+                    {item.label}
+                  </Link>
                 </li>
               ),
             )}

@@ -27,12 +27,14 @@ export default async function Header() {
           <Link href={"/"} className="text-xl text-black md:text-4xl">
             {COMPANY_NAME}
           </Link>
-          <Menu menu={menu} />
         </div>
         <div className="flex flex-row items-center justify-end gap-2 pr-6">
           <InstagramIcon className="pt-1" />
           <EmailIcon className="pt-1" />
         </div>
+      </div>
+      <div className="hidden lg:block">
+        <Menu menu={menu} />
       </div>
 
       {/* MOBILE */}
