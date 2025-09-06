@@ -14,7 +14,7 @@ export default function InfoSection({
   }
 
   return (
-    <section className="flex h-screen flex-col items-center justify-center bg-white">
+    <section className="m-7 flex flex-col items-center justify-center bg-white md:m-0 md:mt-0 md:h-screen">
       <div className="flex w-full flex-col items-center gap-y-10">
         {blok.info.map((info: InfoItemType, index: number) => {
           return (

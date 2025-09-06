@@ -18,7 +18,7 @@ export default function InfoItem({ blok }: { readonly blok: InfoItemType }) {
         visible: { opacity: 1, y: 0 },
         hidden: { opacity: 0, y: 30 },
       }}
-      className="flex w-1/2 flex-col"
+      className="flex flex-col md:w-1/2"
     >
       <h1 className="flex justify-center text-2xl">{blok.title}</h1>
       <p>{blok.description}</p>

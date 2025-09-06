@@ -16,7 +16,7 @@ export default function ImageTextBlock({
   }
 
   const desktopSection = (
-    <div className="hidden bg-slate-200 lg:flex lg:w-1/2 lg:items-center">
+    <div className="hidden lg:flex lg:w-1/2 lg:items-center">
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -35,7 +35,7 @@ export default function ImageTextBlock({
   );
 
   return (
-    <div className="flex flex-col lg:h-[60vh] lg:flex-row lg:overflow-hidden">
+    <div className="flex flex-col bg-slate-200 lg:h-[60vh] lg:flex-row lg:overflow-hidden">
       {index === 1 && desktopSection}
       <div className="h-full w-full flex-none lg:w-1/2">
         <Image
@@ -57,7 +57,7 @@ export default function ImageTextBlock({
           visible: { opacity: 1, y: 0 },
           hidden: { opacity: 0, y: 30 },
         }}
-        className="flex-col gap-3 lg:hidden lg:w-1/2"
+        className="m-7 flex-col gap-3 lg:hidden"
       >
         <h1 className="text-4xl">{blok.title}</h1>
         <p>{blok.description}</p>
