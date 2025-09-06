@@ -65,7 +65,6 @@ export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
         {menu.map((item) =>
           item.sub_menu ? (
             <MenuDropdown
-              slug={item.slug}
               key={item.label}
               label={item.label}
               sub_menu={item.sub_menu}
@@ -110,23 +109,31 @@ export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
           }`}
         >
           <ul className="flex flex-col items-center space-y-6">
-            {menu.map((item, index) => (
-              <li
-                key={item.label}
-                className={
-                  "text-2xl text-black transition-opacity duration-1000 ease-in-out hover:text-gray-200"
-                }
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                {item.slug ? (
-                  <Link href={item.slug} onClick={() => setIsOpen(false)}>
-                    {item.label}
-                  </Link>
-                ) : (
-                  <span className="cursor-default">{item.label}</span>
-                )}
-              </li>
-            ))}
+            {menu.map((item, index) =>
+              item.sub_menu ? (
+                <MenuDropdown
+                  key={item.label}
+                  label={item.label}
+                  sub_menu={item.sub_menu}
+                  index={index}
+                  isOpen={isOpen}
+                />
+              ) : (
+                <li
+                  key={item.label}
+                  className={`text-2xl text-black transition-opacity duration-1000 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
+                  style={{ transitionDelay: `${index * 200}ms` }}
+                >
+                  {item.slug ? (
+                    <Link href={item.slug} onClick={() => setIsOpen(false)}>
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
+                </li>
+              ),
+            )}
           </ul>
         </div>
       </div>

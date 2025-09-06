@@ -1,15 +1,37 @@
 import Link from "next/link";
 import { useState } from "react";
-import { MenuType } from "./Menu";
 import { AnimatePresence, motion } from "framer-motion";
 
-export function MenuDropdown({ label, sub_menu }: Readonly<MenuType>) {
+export interface MenuDropdownProps {
+  label: string;
+  sub_menu: Array<{ slug: string; label: string }>;
+  index?: number;
+  isOpen?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+export function MenuDropdown({
+  label,
+  sub_menu,
+  index = 0,
+  isOpen = false,
+  onMouseEnter,
+  onMouseLeave,
+}: Readonly<MenuDropdownProps>) {
   const [open, setOpen] = useState(false);
   return (
     <li
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      className={`relative text-2xl text-black transition-opacity duration-1000 ease-in-out hover:text-gray-200 lg:relative ${isOpen ? "opacity-100" : "opacity-0"} lg:text-base lg:text-black lg:opacity-100 lg:transition-none lg:hover:text-gray-400`}
+      style={{ transitionDelay: `${index * 200}ms` }}
+      onMouseEnter={(e) => {
+        setOpen(true);
+        onMouseEnter?.();
+      }}
+      onMouseLeave={(e) => {
+        setOpen(false);
+        onMouseLeave?.();
+      }}
     >
       <div className="flex flex-col items-center">
         <span className="cursor-pointer">{label}</span>
