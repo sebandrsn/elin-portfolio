@@ -19,7 +19,7 @@ export default async function Header() {
   }
 
   return (
-    <header className="fixed top-0 z-10 w-full bg-white">
+    <header className="fixed top-0 z-10 w-full bg-white pt-2">
       {/* DESKTOP */}
       <div className="hidden h-full w-full grid-cols-3 lg:grid">
         <div />

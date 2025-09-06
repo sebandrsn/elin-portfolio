@@ -3,17 +3,17 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { SubmenuItemType } from "./Menu";
 
-export interface MenuDropdownProps {
+export interface SubMenuProps {
   label?: string;
   sub_menu: SubmenuItemType[];
   handleClick?: () => void;
 }
 
-export function MenuDropdown({
+export function SubMenu({
   label,
   sub_menu,
   handleClick,
-}: Readonly<MenuDropdownProps>) {
+}: Readonly<SubMenuProps>) {
   const [subMenuIsOpen, setSubMenuIsOpen] = useState(false);
   return (
     <>
@@ -51,7 +51,7 @@ export function MenuDropdown({
           </div>
         </li>
       </div>
-      <div className="hidden md:flex">
+      <div className="mb-2.5 hidden flex-row space-x-6 md:flex">
         {sub_menu?.map((sub) => (
           <Link
             key={sub.slug}
