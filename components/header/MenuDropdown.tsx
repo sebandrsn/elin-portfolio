@@ -7,8 +7,6 @@ export interface MenuDropdownProps {
   sub_menu: Array<{ slug: string; label: string }>;
   index?: number;
   isOpen?: boolean;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
 }
 
 export function MenuDropdown({
@@ -16,8 +14,6 @@ export function MenuDropdown({
   sub_menu,
   index = 0,
   isOpen = false,
-  onMouseEnter,
-  onMouseLeave,
 }: Readonly<MenuDropdownProps>) {
   const [open, setOpen] = useState(false);
   return (
@@ -26,11 +22,9 @@ export function MenuDropdown({
       style={{ transitionDelay: `${index * 200}ms` }}
       onMouseEnter={(e) => {
         setOpen(true);
-        onMouseEnter?.();
       }}
       onMouseLeave={(e) => {
         setOpen(false);
-        onMouseLeave?.();
       }}
     >
       <div className="flex flex-col items-center">
