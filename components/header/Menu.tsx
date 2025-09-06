@@ -124,41 +124,44 @@ export default function Menu({ menu }: Readonly<{ menu: Array<MenuType> }>) {
             }`}
           />
         </button>
-        <div
-          id="mobile-menu"
-          ref={menuRef}
-          role="dialog"
-          aria-modal="true"
-          className={`fixed inset-0 flex items-center justify-center backdrop-blur-md transition-all duration-1000 ${
-            isOpen
-              ? "pointer-events-auto visible z-10 opacity-100"
-              : "pointer-events-none invisible z-[-1] opacity-0"
-          }`}
-        >
-          <ul className="flex flex-col items-center space-y-6">
-            {menu.map((item, index) =>
-              item.sub_menu ? (
-                <MenuDropdown
-                  key={item.label}
-                  label={item.label}
-                  sub_menu={item.sub_menu}
-                  index={index}
-                  handleClick={() => setIsOpen(false)}
-                />
-              ) : (
-                <li
-                  key={item.label}
-                  className={`text-2xl text-black transition-opacity duration-1000 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
-                  style={{ transitionDelay: `${index * 200}ms` }}
-                >
-                  <Link href={item.slug} onClick={() => setIsOpen(false)}>
-                    {item.label}
-                  </Link>
-                </li>
-              ),
-            )}
-          </ul>
-        </div>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
+              id="mobile-menu"
+              ref={menuRef}
+              role="dialog"
+              aria-modal="true"
+              className="fixed inset-0 flex items-center justify-center backdrop-blur-md"
+            >
+              <ul className="flex flex-col items-center space-y-6">
+                {menu.map((item, index) =>
+                  item.sub_menu ? (
+                    <MenuDropdown
+                      key={item.label}
+                      label={item.label}
+                      sub_menu={item.sub_menu}
+                      handleClick={() => setIsOpen(false)}
+                    />
+                  ) : (
+                    <li
+                      key={item.label}
+                      className={`text-2xl text-black transition-opacity duration-1000 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
+                      style={{ transitionDelay: `${index * 200}ms` }}
+                    >
+                      <Link href={item.slug} onClick={() => setIsOpen(false)}>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
