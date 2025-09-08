@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ImageTextBlock as ImageTextBlockType } from "@/.storyblok/types/337287/storyblok-components";
+import { getImageDimensions } from "@/util/getImageDimensions";
 
 export default function ImageTextBlock({
   blok,
@@ -14,6 +15,12 @@ export default function ImageTextBlock({
   if (!blok.image.filename) {
     return null;
   }
+
+  const dimensions = getImageDimensions(blok.image.filename);
+  if (!dimensions) {
+    return null;
+  }
+  const { width, height } = dimensions;
 
   const desktopSection = (
     <div className="hidden lg:flex lg:w-1/2 lg:items-center">
@@ -41,8 +48,8 @@ export default function ImageTextBlock({
         <Image
           src={blok.image.filename}
           alt={blok.image.alt ?? "Image text block"}
-          width={2100}
-          height={1400}
+          width={width}
+          height={height}
           className="h-full w-full object-cover"
           sizes="(max-width: 1023px) 100vw, 1050px"
         />

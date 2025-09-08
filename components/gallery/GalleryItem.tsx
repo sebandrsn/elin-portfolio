@@ -6,8 +6,10 @@ import { GalleryItem as GalleryItemType } from "@/.storyblok/types/337287/storyb
 
 export default function GalleryItem({
   blok,
+  handleOpenModal,
 }: {
   readonly blok: GalleryItemType;
+  readonly handleOpenModal: (blok: GalleryItemType) => void;
 }) {
   if (!blok.image?.filename) {
     return null;
@@ -39,6 +41,8 @@ export default function GalleryItem({
         height={dimensions.height}
         className="h-auto w-full object-cover transition duration-200 hover:scale-105"
         style={{ display: "block" }}
+        sizes="(max-width: 1023px) 100vw, 2100px"
+        onClick={() => handleOpenModal(blok)}
       />
     </motion.div>
   );
