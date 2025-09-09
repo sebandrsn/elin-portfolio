@@ -37,6 +37,10 @@ export default function GallerySection({
     setSelectedGalleryItem(blok);
   };
 
+  const handleCloseModal = () => {
+    setSelectedGalleryItem(null);
+  };
+
   const breakpointColumnsObj = {
     default: 3,
     1024: 2,
@@ -62,7 +66,13 @@ export default function GallerySection({
           </Masonry>
         </div>
       </div>
-      {selectedGalleryItem && <Modal galleryItem={selectedGalleryItem} />}
+      {selectedGalleryItem && (
+        <Modal
+          galleryItemId={selectedGalleryItem._uid}
+          galleryItems={blok.items}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
     </>
   );
 }

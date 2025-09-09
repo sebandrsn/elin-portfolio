@@ -10,7 +10,6 @@ import {
 
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 
 import { EffectFade, Pagination, Navigation } from "swiper/modules";
@@ -41,14 +40,14 @@ export default function HeroSlider({
         navigation={false}
         loop={true}
         effect={"fade"}
-        modules={[EffectFade, Pagination, Navigation]}
+        modules={[EffectFade, Pagination]}
         className="h-full w-full"
       >
         <AutoAdvance />
         {blok.heroes
           .filter((hero: HeroType) => hero.image?.filename)
           .map((hero: HeroType) => (
-            <SwiperSlide key={hero._uid} className="w/full relative h-full">
+            <SwiperSlide key={hero._uid} className="relative h-full w-full">
               <Image
                 src={hero.image.filename!}
                 alt={hero.image.alt ?? "Hero image"}

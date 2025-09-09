@@ -1,29 +1,66 @@
 import { GalleryItem } from "@/.storyblok/types/337287/storyblok-components";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+
+import { EffectFade, Pagination, Navigation } from "swiper/modules";
 
 export default function Modal({
-  galleryItem,
-}: Readonly<{ galleryItem: GalleryItem }>) {
-  if (!galleryItem.image || !galleryItem.image.filename) return null;
+  galleryItemId,
+  galleryItems,
+  handleCloseModal,
+}: Readonly<{
+  galleryItemId: string;
+  galleryItems: GalleryItem[];
+  handleCloseModal: () => void;
+}>) {
+  if (!galleryItems || galleryItems.length === 0) return null;
 
-  const assetUrl = galleryItem.image.filename;
-  const [widthStr, heightStr] = assetUrl.split("/")[5].split("x");
-  const dimensions = {
-    width: parseInt(widthStr, 10),
-    height: parseInt(heightStr, 10),
-  };
+  const initialSlide = galleryItems.findIndex(
+    (item) => item._uid === galleryItemId,
+  );
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xs">
-      <Image
-        src={galleryItem.image.filename}
-        alt={galleryItem.image.alt || "Gallery image"}
-        width={dimensions.width}
-        height={dimensions.height}
-        style={{ display: "block" }}
-        className="max-h-screen max-w-1/2 object-contain"
-        sizes="(max-width: 1023px) 100vw, 2100px"
-      />
+      <Swiper
+        className="h-[80vh] w-[min(1100px,90vw)] rounded-2xl bg-white p-4 shadow-lg"
+        loop
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        navigation
+        modules={[EffectFade, Pagination, Navigation]}
+        initialSlide={initialSlide >= 0 ? initialSlide : 0}
+      >
+        {galleryItems
+          .filter((item: GalleryItem) => item.image?.filename)
+          .map((item: GalleryItem) => (
+            <SwiperSlide key={item._uid}>
+              <div className="relative h-full w-full">
+                <Image
+                  src={item.image?.filename!}
+                  alt={item.image?.alt ?? "Gallery image"}
+                  fill
+                  className="object-contain"
+                  loading="eager"
+                  priority
+                  sizes="(max-width: 1023px) 100vw, 2100px"
+                />
+                <div className="absolute inset-0 flex items-start justify-end">
+                  <button
+                    className="cursor-pointer rounded p-2"
+                    onClick={handleCloseModal}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+      </Swiper>
     </div>
   );
 }
