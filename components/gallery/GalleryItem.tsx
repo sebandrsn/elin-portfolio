@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { GalleryItem as GalleryItemType } from "@/.storyblok/types/337287/storyblok-components";
+import { useRef } from "react";
 
 export default function GalleryItem({
   blok,
@@ -11,6 +12,13 @@ export default function GalleryItem({
   readonly blok: GalleryItemType;
   readonly handleOpenModal: (blok: GalleryItemType) => void;
 }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(ref, {
+    margin: "-10% 0px -10% 0px",
+    amount: 0.2,
+    once: true,
+  });
+
   if (!blok.image?.filename) {
     return null;
   }
@@ -24,7 +32,9 @@ export default function GalleryItem({
 
   return (
     <motion.div
-      initial="hidden"
+      ref={ref}
+      animate={isInView ? "visible" : "hidden"}
+      initial={{ opacity: 0 }}
       whileInView="visible"
       viewport={{ once: true }}
       transition={{ duration: 1, delay: 0.2 }}
