@@ -14,7 +14,7 @@ export default function GalleryItem({
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, {
-    margin: "-10% 0px -10% 0px",
+    margin: "0% 0px 0% 0px",
     amount: 0.2,
     once: true,
   });
